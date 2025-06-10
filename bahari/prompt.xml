@@ -1,0 +1,29 @@
+<prompt>
+    <objective>
+        - parse a template price list pdf file (supplied as an attachment in this chat)
+            - ignore all logos as we will provide our own
+        - create a workflow that will support additional functionality specified in the <functionality> tag
+        - output the final price list in pdf format to adhere to the input formatting
+    </objective>
+    <functionality>
+        - I would be able to update all products pricing based on a new exchange rate
+            - make sure to keep track of the different input currencies
+        - I would be able to update an individual product price based on VAT tax (yes/no - to apply 18% to price)
+        - I would be able to add a new product in any section (the product list will be divided by section - i.e. Shellfish separate from say Whole Fish)
+        - I would be able to update an individual product price based on the cost of the individual product abroad
+        - I would be able to update an individual product price based on the margin that I want for that product
+    </functionality>
+    <architecture>
+        - streamlit app with the following components
+            - an fx tab where user can enter FX rates that will cascade to output prices
+            - a price list tab which mimics the data contents of the template pdf, such that
+                - that nested structure of category/sub-category is maintained for example Salmon (Salmo salar) / Salmon whole
+                - allow creation of new categories and sub-categories
+            - a preview tab which shows the expected output, which includes the expected output and a print pdf button
+    </architecture>
+    <constraints>
+        - my package manager is uv
+        - i want to do this work in a uv project called bahari
+        - i am comfortable with unix, python and git
+    </constraints>
+</prompt>

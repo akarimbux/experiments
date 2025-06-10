@@ -1,0 +1,43 @@
+<!doctype html>
+<style>
+body { font: 12pt sans-serif; margin: 0 }
+h1   { font-size: 1.4em; margin: 0 0 6pt }
+table{ width: 100%; border-collapse: collapse; font-size: 10pt }
+th,td{ padding: 2pt 4pt; border-bottom: 1px solid #ddd }
+.category { background: #f0f0f0; font-weight: bold }
+/* indent and style the sub‑category row */
+.subcat td { padding-left: 1.5em; font-weight: bold; font-style: normal }
+/* vertical spacing before each new category */
+.spacer   { height: 24pt }
+th       { white-space: nowrap }          /* keep Px/kg on one line */
+.indent  { padding-left: 3em }
+</style>
+
+<h1>Price list {{ now if now is defined else "" }}</h1>
+
+<table width="100%">
+  <tr>
+    <th width="45%">Product</th>
+    <!--<th>Pack</th>-->
+    <th align="right">Price/KG</th>
+  </tr>
+
+  {% for g in groups %}
+    {% if not loop.first %}
+      <tr class="spacer"><td colspan="2"></td></tr>
+    {% endif %}
+    <tr class="category"><td colspan="2">{{ g.cat }}</td></tr>
+    {% for s in g.subs %}
+        {% if s.sub %}
+          <tr class="subcat"><td colspan="2">{{ s.sub }}</td></tr>
+        {% endif %}
+        {% for r in s.rows %}
+          <tr>
+            <td class="indent">{{ r.name }}</td>
+            <!--<td>{{ r.pack }}</td>-->
+            <td align="right">{{ "%.2f"|format(r["sell px"]) }}</td>
+          </tr>
+        {% endfor %}
+    {% endfor %}
+  {% endfor %}
+</table>

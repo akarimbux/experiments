@@ -1,0 +1,44 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode and PyCharm config
+.vscode/
+.idea/
+
+# macOS metadata
+.DS_Store
+
+# Test and coverage
+coverage/
+*.cover
+*.py,cover
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+
+# Logs and local dbs
+*.log
+*.sqlite3
+*.db
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Retool-specific local files (if any)
+.retool/
